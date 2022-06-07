@@ -1,0 +1,36 @@
+<!-- Preloader -->
+<!-- <app-preloader></app-preloader> -->
+
+<!-- This conditional block for the rest of the project pages except the authentication pages -->
+<ng-container
+    *ngIf="
+        !(
+            location == '/auth/signup' ||
+            location == '/home' ||
+            location == '/auth/signin' ||
+            location == '/auth/forgot-password' ||
+            location == '/others/error-404'
+        )
+    "
+>
+    <app-navbar></app-navbar>
+
+    <app-sidebar></app-sidebar>
+
+    <div class="main-content d-flex flex-column">
+        <router-outlet></router-outlet>
+    </div>
+</ng-container>
+
+<ng-container
+    *ngIf="
+        location == '/auth/signup' ||
+        location == '/home' ||
+        location == '/auth/signin' ||
+        location == '/auth/forgot-password' ||
+        location == '/others/error-404'
+    "
+>
+    <router-outlet></router-outlet>
+</ng-container>
+<app-footer></app-footer>
