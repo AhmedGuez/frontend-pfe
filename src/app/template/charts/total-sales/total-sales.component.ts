@@ -1,80 +1,105 @@
-import { Component, OnInit } from '@angular/core';
-import ApexCharts from 'apexcharts';
+import { Component, Input, OnInit } from "@angular/core";
+import ApexCharts from "apexcharts";
 
 @Component({
-    selector: 'app-total-sales',
-    templateUrl: './total-sales.component.html',
-    styleUrls: ['./total-sales.component.scss']
+    selector: "app-total-sales",
+    templateUrl: "./total-sales.component.html",
+    styleUrls: ["./total-sales.component.scss"],
 })
-
 export class TotalSalesComponent implements OnInit {
-
-    constructor() { }
-
-    ngOnInit() {
+    @Input() dataElec;
+    @Input() dataMeca;
+    @Input() dataInfo;
+    @Input() dataPlom;
+    constructor() {}
+    ngOnChanges() {
         const options = {
             chart: {
                 height: 380,
-                type: 'line'
+                type: "line",
             },
-            colors: ['#2962ff', '#886cff'],
+            colors: ["#2962ff", "#886cff", "#78f542", "#991431"],
             series: [
                 {
-                    name: 'Online',
-                    data: [45, 52, 38, 45, 45, 52, 38, 45, 45, 52, 38, 45]
+                    name: "Electrique",
+                    data: this.dataElec,
                 },
                 {
-                    name: 'Ofline',
-                    data: [12, 42, 68, 33, 12, 42, 68, 33, 12, 42, 68, 33,]
-                }
+                    name: "Mecanique",
+                    data: this.dataMeca,
+                },
+                {
+                    name: "Plomberie & chaud froid",
+                    data: this.dataPlom,
+                },
+                {
+                    name: "Informatique",
+                    data: this.dataInfo,
+                },
             ],
-            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+            labels: [
+                "Jan",
+                "Feb",
+                "Mar",
+                "Apr",
+                "May",
+                "Jun",
+                "July",
+                "Aug",
+                "Sep",
+                "Oct",
+                "Nov",
+                "Dec",
+            ],
             markers: {
-                size: 0
+                size: 0,
             },
             stroke: {
                 width: 3,
-                curve: 'smooth',
-                lineCap: 'round'
+                curve: "smooth",
+                lineCap: "round",
             },
             legend: {
-                position: 'top',
+                position: "top",
             },
             grid: {
                 show: true,
-                borderColor: '#f6f6f7',
+                borderColor: "#f6f6f7",
             },
             xaxis: {
                 labels: {
                     style: {
-                        colors: '#686c71',
-                        fontSize: '12px',
+                        colors: "#686c71",
+                        fontSize: "12px",
                     },
                 },
                 axisBorder: {
                     show: true,
-                    color: '#f6f6f7',
+                    color: "#f6f6f7",
                     height: 1,
-                    width: '100%',
+                    width: "100%",
                     offsetX: 0,
-                    offsetY: 0
+                    offsetY: 0,
                 },
             },
             yaxis: {
                 labels: {
                     style: {
-                        color: '#686c71',
-                        fontSize: '12px',
+                        color: "#686c71",
+                        fontSize: "12px",
                     },
                 },
                 axisBorder: {
                     show: true,
-                    color: '#f6f6f7',
+                    color: "#f6f6f7",
                 },
-            }
+            },
         };
-        const chart = new ApexCharts(document.querySelector('#total-sales-chart'), options);
+        const chart = new ApexCharts(
+            document.querySelector("#total-sales-chart"),
+            options
+        );
         chart.render();
     }
-
+    ngOnInit() {}
 }

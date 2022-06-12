@@ -1,0 +1,72 @@
+<div class="main-content-header">
+    <h1>Dashboard</h1>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a routerLink="/dashboard-sales">Services</a>
+        </li>
+        <li class="breadcrumb-item active">
+            <span class="active">Création</span>
+        </li>
+    </ol>
+</div>
+<!-- End Main Content Header -->
+
+<!-- Vertical Form -->
+<div class="row">
+    <div class="col-xl-12">
+        <div class="card mb-30">
+            <div class="card-body">
+                <div class="card-header">
+                    <h5 class="card-title">Ajouter un service</h5>
+                </div>
+
+                <form>
+                    <div class="form-group">
+                        <label> Nom du service </label>
+                        <input
+                            type="text"
+                            name="name"
+                            [(ngModel)]="service.name"
+                            type="text"
+                            class="form-control"
+                        />
+                    </div>
+
+                    <div class="form-group">
+                        <label> Email </label>
+                        <input
+                            type="text"
+                            name="email"
+                            [(ngModel)]="service.email"
+                            type="text"
+                            class="form-control"
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label> Téléphone </label>
+                        <input
+                            name="tel"
+                            [(ngModel)]="service.tel"
+                            type="text"
+                            class="form-control"
+                        />
+                    </div>
+
+                    <div class="form-group w-100">
+                        <span *ngIf="successMsg" class="alert alert-success">
+                            {{ successMsg }}
+                        </span>
+                    </div>
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary"
+                        (click)="createService()"
+                    >
+                        Enregistrer
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

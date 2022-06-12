@@ -41,15 +41,20 @@ export class InterventionService {
             "x-auth-token": token ? token : "",
         });
 
-        return this.http.get(this.base_Url + "/intervention/:" + id, {
+        return this.http.get(this.base_Url + "/interventions/id/" + id, {
             headers,
         });
     }
 
-    public updateInterventionStatus(intervention) {
+    public updateInterventionStatus(id, data) {
+        let token = localStorage.getItem("token");
+        let headers = new HttpHeaders({
+            "x-auth-token": token ? token : "",
+        });
         return this.http.put(
-            this.base_Url + `/interventions/update/${intervention.id}`,
-            intervention
+            this.base_Url + `/interventions/update/${id}`,
+            data,
+            { headers }
         );
     }
 }

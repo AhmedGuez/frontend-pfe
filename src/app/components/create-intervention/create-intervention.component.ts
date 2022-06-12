@@ -12,6 +12,7 @@ export class CreateInterventionComponent implements OnInit {
     public intervention: Intervention;
     public successMsg: String = "";
     public errorMsg: String = "";
+    public role = localStorage.getItem("role");
     constructor(
         private interService: InterventionService,
         private userService: UserService
@@ -33,7 +34,9 @@ export class CreateInterventionComponent implements OnInit {
             .subscribe((res: any) => {
                 this.successMsg = "Intervention added successfully!";
                 setTimeout(() => {
-                    window.location.href = "/interventions";
+                    if (this.role != "EMPLOYEE") {
+                        window.location.href = "/interventions";
+                    }
                 }, 2000);
             });
     }

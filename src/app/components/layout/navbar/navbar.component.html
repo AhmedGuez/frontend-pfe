@@ -1,6 +1,6 @@
 <!-- Top Navbar -->
 <nav class="navbar navbar-expand fixed-top top-menu">
-    <a class="navbar-brand" routerLink="/dashboard-sales">
+    <a class="navbar-brand">
         <!-- Large logo -->
         <img
             src="assets/img/Logo.png"
@@ -14,12 +14,12 @@
     </a>
 
     <!-- Burger menu -->
-    <div class="burger-menu toggle-menu">
+    <!--  <div class="burger-menu toggle-menu">
         <span class="top-bar"></span>
         <span class="middle-bar"></span>
         <span class="bottom-bar"></span>
     </div>
-
+ -->
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <!-- Mega Menu -->
 
@@ -60,36 +60,13 @@
                 <div class="dropdown-menu">
                     <a
                         class="dropdown-item"
-                        routerLink="/others/profile"
                         routerLinkActive="active"
+                        routerLink="/user-profile"
                     >
                         <i data-feather="user" class="icon"></i>
                         Profile
                     </a>
-                    <a
-                        class="dropdown-item"
-                        routerLink="/inbox"
-                        routerLinkActive="active"
-                    >
-                        <i data-feather="inbox" class="icon"></i>
-                        Mailbox
-                    </a>
-                    <a
-                        class="dropdown-item"
-                        routerLink="/chat"
-                        routerLinkActive="active"
-                    >
-                        <i data-feather="help-circle" class="icon"></i>
-                        Support
-                    </a>
-                    <a
-                        class="dropdown-item"
-                        routerLink="/others/profile-settings"
-                        routerLinkActive="active"
-                    >
-                        <i data-feather="settings" class="icon"></i>
-                        Settings
-                    </a>
+
                     <a class="dropdown-item" (click)="logout()">
                         <i data-feather="log-out" class="icon"></i>
                         Logout

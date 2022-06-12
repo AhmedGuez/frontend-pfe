@@ -104,9 +104,17 @@ import { SettingsComponent } from "./components/settings/settings.component";
 import { OrdersComponent } from "./components/orders/orders.component";
 import { FormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
-import { NavbarComponent } from './components/layout/navbar/navbar.component';
-import { SidebarComponent } from './components/layout/sidebar/sidebar.component';
-import { InterventionDetailsComponent } from './components/intervention-details/intervention-details.component';
+import { NavbarComponent } from "./components/layout/navbar/navbar.component";
+import { SidebarComponent } from "./components/layout/sidebar/sidebar.component";
+import { InterventionDetailsComponent } from "./components/intervention-details/intervention-details.component";
+import { ListingServicesComponent } from "./components/listing-services/listing-services.component";
+import { CreateServiceComponent } from "./components/create-service/create-service.component";
+import { InterventionPipe } from "./pipes/intervention.pipe";
+import { UserPipe } from "./pipes/user.pipe";
+import { DashboardClientComponent } from './components/dashboard-client/dashboard-client.component';
+import { AppTotalClientComponent } from './components/app-total-client/app-total-client.component';
+import { MesInterventionsComponent } from './components/mes-interventions/mes-interventions.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
 @NgModule({
     declarations: [
@@ -213,9 +221,17 @@ import { InterventionDetailsComponent } from './components/intervention-details/
         NavbarComponent,
         SidebarComponent,
         InterventionDetailsComponent,
+        ListingServicesComponent,
+        CreateServiceComponent,
+        InterventionPipe,
+        UserPipe,
+        DashboardClientComponent,
+        AppTotalClientComponent,
+        MesInterventionsComponent,
+        UserProfileComponent,
     ],
     imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
-    providers: [],
+    providers: [InterventionPipe, UserPipe],
     bootstrap: [AppComponent],
 })
 export class AppModule {}

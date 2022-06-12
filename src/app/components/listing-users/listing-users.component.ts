@@ -9,7 +9,13 @@ import { UserService } from "src/app/services/user.service";
 })
 export class ListingUsersComponent implements OnInit {
     public users: User[];
-    constructor(private userService: UserService) {}
+    public filter;
+    constructor(private userService: UserService) {
+        this.filter = {
+            name: "",
+            role: "",
+        };
+    }
 
     ngOnInit(): void {
         this.userService.getAllUsers().subscribe((res: any) => {

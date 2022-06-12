@@ -13,7 +13,33 @@
                         </button>
                     </div>
                 </div>
+                <div class="row border-bottom mb-4">
+                    <div class="col col-lg-6 mb-4 col-sm-12 col-md-12">
+                        <input
+                            class="form-control"
+                            placeholder="Nom d'utilisateur"
+                            name="name"
+                            [(ngModel)]="filter.name"
+                        />
+                    </div>
 
+                    <div class="col col-lg-6 mb-4 col-sm-12 col-md-12">
+                        <select
+                            name="role"
+                            [(ngModel)]="filter.role"
+                            class="form-control"
+                        >
+                            <option value="" disabled selected>
+                                Choissisez le role d'utilisateur
+                            </option>
+                            <option value="">Tous</option>
+                            <option value="EMPLOYEE">Employée</option>
+                            <option value="PLOMBERIE">Plomberie</option>
+                            <option value="ELECTRICIEN">Electricien</option>
+                            <option value="INFORMATICIEN">Informaticien</option>
+                        </select>
+                    </div>
+                </div>
                 <div class="table-responsive">
                     <table class="table table-hover text-vertical-middle mb-0">
                         <thead class="bort-none borpt-0">
@@ -27,22 +53,39 @@
                         </thead>
 
                         <tbody>
-                            <tr *ngFor="let user of users; let index = index">
+                            <tr
+                                *ngFor="
+                                    let user of users | userPipe: filter;
+                                    let index = index
+                                "
+                            >
                                 <td>{{ index + 1 }}</td>
                                 <td>{{ user.name }}</td>
                                 <td>{{ user.email }}</td>
                                 <td>{{ user.role }}</td>
                                 <td class="text-center">
-                                    <a class="text-success mr-2" title="Edit">
+                                    <a
+                                        class="text-success mr-2"
+                                        href="#"
+                                        data-toggle="tooltip"
+                                        data-placement="top"
+                                        title="Edit"
+                                    >
                                         <i
-                                            data-feather="edit-2"
-                                            class="icon wh-15 mt-minus-3"
+                                            class="fa fa-pencil wh-15 mt-minus-3"
+                                            aria-hidden="true"
                                         ></i>
                                     </a>
-                                    <a class="text-danger mr-2" title="Delete">
+                                    <a
+                                        class="text-danger mr-2"
+                                        href="#"
+                                        data-toggle="tooltip"
+                                        data-placement="top"
+                                        title="Delete"
+                                    >
                                         <i
-                                            data-feather="x"
-                                            class="icon wh-15 mt-minus-3"
+                                            class="fa fa-trash wh-15 mt-minus-3"
+                                            aria-hidden="true"
                                         ></i>
                                     </a>
                                 </td>

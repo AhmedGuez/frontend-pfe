@@ -57,14 +57,24 @@ import { CreateInterventionComponent } from "./components/create-intervention/cr
 import { ListingUsersComponent } from "./components/listing-users/listing-users.component";
 import { CreateUserComponent } from "./components/create-user/create-user.component";
 import { InterventionDetailsComponent } from "./components/intervention-details/intervention-details.component";
+import { ListingServicesComponent } from "./components/listing-services/listing-services.component";
+import { CreateServiceComponent } from "./components/create-service/create-service.component";
+import { DashboardClientComponent } from "./components/dashboard-client/dashboard-client.component";
+import { MesInterventionsComponent } from "./components/mes-interventions/mes-interventions.component";
+import { UserProfileComponent } from "./components/user-profile/user-profile.component";
 
 const routes: Routes = [
     { path: "", redirectTo: "/dashboard", pathMatch: "full" },
     { path: "dashboard", component: DashboardComponent },
+    { path: "dashboard-client", component: DashboardClientComponent },
+    { path: "services", component: ListingServicesComponent },
     { path: "interventions", component: ListingInterventionsComponent },
+    { path: "mes-interventions", component: MesInterventionsComponent },
+    { path: "user-profile", component: UserProfileComponent },
     { path: "users", component: ListingUsersComponent },
     { path: "intervention/:id", component: InterventionDetailsComponent },
     { path: "create-intervention", component: CreateInterventionComponent },
+    { path: "create-service", component: CreateServiceComponent },
     { path: "create-user", component: CreateUserComponent },
     { path: "dashboard-sales", component: SalesComponent },
     { path: "creer", component: CreationComponent },

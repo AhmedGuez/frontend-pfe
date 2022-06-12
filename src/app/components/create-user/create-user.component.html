@@ -39,7 +39,8 @@
                             [(ngModel)]="user.role"
                             class="form-control"
                         >
-                            <option value="TECHNICIEN">Technicien</option>
+                            <option value="EMPLOYEE">Employée</option>
+                            <option value="PLOMBERIE">Plomberie</option>
                             <option value="ELECTRICIEN">Electricien</option>
                             <option value="INFORMATICIEN">Informaticien</option>
                         </select>
@@ -60,11 +61,26 @@
                             type="password"
                             name="password"
                             [(ngModel)]="user.password"
-                            type="text"
                             class="form-control"
                         />
                     </div>
-
+                    <div class="form-group">
+                        <label> Service </label>
+                        <select
+                            name="role"
+                            [(ngModel)]="user.service"
+                            class="form-control"
+                        >
+                            <ng-container *ngFor="let service of services">
+                                <option [value]="service._id">
+                                    {{ service.name }}
+                                </option>
+                            </ng-container>
+                        </select>
+                        <small id="emailHelp" class="form-text text-muted"
+                            >service est optionnel.</small
+                        >
+                    </div>
                     <div class="form-group w-100">
                         <span *ngIf="successMsg" class="alert alert-success">
                             {{ successMsg }}

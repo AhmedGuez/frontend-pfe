@@ -23,8 +23,13 @@ export class LoginComponent implements OnInit {
             .login(this.email, this.password)
             .subscribe((res: any) => {
                 localStorage.setItem("token", res?.token);
-                if (res?.token) {
+                localStorage.setItem("role", res?.role);
+                if (res?.token && res?.role === "ADMIN") {
                     window.location.href = "/dashboard";
+                } else if (res?.token && res?.role == "EMPLOYEE") {
+                    window.location.href = "/create-intervention";
+                } else if (res?.token) {
+                    window.location.href = "/dashboard-client";
                 }
             });
     }

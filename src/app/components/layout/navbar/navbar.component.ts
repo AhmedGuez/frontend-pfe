@@ -29,6 +29,7 @@ export class NavbarComponent implements OnInit {
 
     logout() {
         localStorage.removeItem("token");
+        localStorage.removeItem("role");
         this.isConnected = false;
         window.location.href = "/auth/signin";
     }
