@@ -4,7 +4,7 @@
             <div class="card-body">
                 <div class="card-header">
                     <div class="d-flex justify-content-between">
-                        <h5 class="card-title">Liste des utilisateurs</h5>
+                        <h5 class="card-title">Liste des services</h5>
                         <button
                             class="btn btn-primary"
                             routerLink="/create-service"
@@ -52,7 +52,7 @@
                                     </a>
                                     <a
                                         class="text-danger mr-2"
-                                        href="#"
+                                        (click)="deleteService(service._id)"
                                         data-toggle="tooltip"
                                         data-placement="top"
                                         title="Delete"

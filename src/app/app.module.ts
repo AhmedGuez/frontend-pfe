@@ -111,11 +111,16 @@ import { ListingServicesComponent } from "./components/listing-services/listing-
 import { CreateServiceComponent } from "./components/create-service/create-service.component";
 import { InterventionPipe } from "./pipes/intervention.pipe";
 import { UserPipe } from "./pipes/user.pipe";
-import { DashboardClientComponent } from './components/dashboard-client/dashboard-client.component';
-import { AppTotalClientComponent } from './components/app-total-client/app-total-client.component';
-import { MesInterventionsComponent } from './components/mes-interventions/mes-interventions.component';
-import { UserProfileComponent } from './components/user-profile/user-profile.component';
-
+import { DashboardClientComponent } from "./components/dashboard-client/dashboard-client.component";
+import { AppTotalClientComponent } from "./components/app-total-client/app-total-client.component";
+import { MesInterventionsComponent } from "./components/mes-interventions/mes-interventions.component";
+import { UserProfileComponent } from "./components/user-profile/user-profile.component";
+import { NotifierModule } from "angular-notifier";
+import { CreateFournisseurComponent } from './components/create-fournisseur/create-fournisseur.component';
+import { ListingFournisseursComponent } from './components/listing-fournisseurs/listing-fournisseurs.component';
+import { CreateOrderComponent } from './components/create-order/create-order.component';
+import { ListingOrdersComponent } from './components/listing-orders/listing-orders.component';
+import { CreateOrderInterventionComponent } from './components/create-order-intervention/create-order-intervention.component';
 @NgModule({
     declarations: [
         AppComponent,
@@ -229,8 +234,54 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
         AppTotalClientComponent,
         MesInterventionsComponent,
         UserProfileComponent,
+        CreateFournisseurComponent,
+        ListingFournisseursComponent,
+        CreateOrderComponent,
+        ListingOrdersComponent,
+        CreateOrderInterventionComponent,
     ],
-    imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        HttpClientModule,
+        NotifierModule.withConfig({
+            position: {
+                horizontal: {
+                    /**
+                     * Defines the horizontal position on the screen
+                     * @type {'left' | 'middle' | 'right'}
+                     */
+                    position: "right",
+
+                    /**
+                     * Defines the horizontal distance to the screen edge (in px)
+                     * @type {number}
+                     */
+                    distance: 12,
+                },
+
+                vertical: {
+                    /**
+                     * Defines the vertical position on the screen
+                     * @type {'top' | 'bottom'}
+                     */
+                    position: "top",
+
+                    /**
+                     * Defines the vertical distance to the screen edge (in px)
+                     * @type {number}
+                     */
+                    distance: 12,
+
+                    /**
+                     * Defines the vertical gap, existing between multiple notifications (in px)
+                     * @type {number}
+                     */
+                },
+            },
+        }),
+    ],
     providers: [InterventionPipe, UserPipe],
     bootstrap: [AppComponent],
 })

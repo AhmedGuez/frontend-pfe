@@ -156,6 +156,23 @@
                                             aria-hidden="true"
                                         ></i>
                                     </a>
+
+                                    <a
+                                        *ngIf="
+                                            intervention.etat == 'NON_AFFECTEE'
+                                        "
+                                        class="text-danger"
+                                        (click)="
+                                            supprimerIntervention(
+                                                intervention._id
+                                            )
+                                        "
+                                    >
+                                        <i
+                                            class="fa fa-trash ml-2"
+                                            aria-hidden="true"
+                                        ></i>
+                                    </a>
                                     <div
                                         class="modal fade"
                                         [attr.id]="

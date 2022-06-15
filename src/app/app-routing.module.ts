@@ -62,12 +62,23 @@ import { CreateServiceComponent } from "./components/create-service/create-servi
 import { DashboardClientComponent } from "./components/dashboard-client/dashboard-client.component";
 import { MesInterventionsComponent } from "./components/mes-interventions/mes-interventions.component";
 import { UserProfileComponent } from "./components/user-profile/user-profile.component";
+import { ListingOrdersComponent } from "./components/listing-orders/listing-orders.component";
+import { ListingFournisseursComponent } from "./components/listing-fournisseurs/listing-fournisseurs.component";
+import { CreateOrderComponent } from "./components/create-order/create-order.component";
+import { CreateFournisseurComponent } from "./components/create-fournisseur/create-fournisseur.component";
+import { CreateOrderInterventionComponent } from "./components/create-order-intervention/create-order-intervention.component";
 
 const routes: Routes = [
     { path: "", redirectTo: "/dashboard", pathMatch: "full" },
     { path: "dashboard", component: DashboardComponent },
     { path: "dashboard-client", component: DashboardClientComponent },
     { path: "services", component: ListingServicesComponent },
+
+    { path: "commandes", component: ListingOrdersComponent },
+    { path: "fournisseurs", component: ListingFournisseursComponent },
+    { path: "create-order", component: CreateOrderComponent },
+    { path: "create-order/:id", component: CreateOrderInterventionComponent },
+    { path: "create-fournisseur", component: CreateFournisseurComponent },
     { path: "interventions", component: ListingInterventionsComponent },
     { path: "mes-interventions", component: MesInterventionsComponent },
     { path: "user-profile", component: UserProfileComponent },

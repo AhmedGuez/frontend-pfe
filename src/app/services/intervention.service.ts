@@ -57,4 +57,28 @@ export class InterventionService {
             { headers }
         );
     }
+
+    public deleteIntervention(id) {
+        let token = localStorage.getItem("token");
+        let headers = new HttpHeaders({
+            "x-auth-token": token ? token : "",
+        });
+        return this.http.delete(
+            this.base_Url + `/interventions/delete/${id}`,
+
+            { headers }
+        );
+    }
+
+    public updateInterventionOrder(id, data) {
+        let token = localStorage.getItem("token");
+        let headers = new HttpHeaders({
+            "x-auth-token": token ? token : "",
+        });
+        return this.http.put(
+            this.base_Url + `/orders/intervention/${id}`,
+            data,
+            { headers }
+        );
+    }
 }

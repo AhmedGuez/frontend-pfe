@@ -28,7 +28,13 @@ export class SidebarComponent implements OnInit {
             title: "Services",
             icon: "inbox",
         },
+
         this.role == "ADMIN" && {
+            path: "/fournisseurs",
+            title: "Fournisseurs",
+            icon: "user",
+        },
+        {
             path: "/commandes",
             title: "commandes",
             icon: "list",

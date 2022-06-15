@@ -1,39 +1,39 @@
 import { Component, OnInit } from "@angular/core";
 import { NotifierService } from "angular-notifier";
-import { User } from "src/app/models/user";
-import { ServiceUserService } from "src/app/services/service-user.service";
+import { Order } from "src/app/models/order";
+import { OrdersService } from "src/app/services/orders.service";
 import { UserService } from "src/app/services/user.service";
 
 @Component({
-    selector: "app-create-user",
-    templateUrl: "./create-user.component.html",
-    styleUrls: ["./create-user.component.scss"],
+    selector: "app-create-order",
+    templateUrl: "./create-order.component.html",
+    styleUrls: ["./create-order.component.scss"],
 })
-export class CreateUserComponent implements OnInit {
-    public user: User;
+export class CreateOrderComponent implements OnInit {
+    public order: Order;
     public successMsg: String = "";
     public errorMsg: String = "";
-    public services: any;
+    public fournisseurs: any;
     constructor(
         private userService: UserService,
-        private serviceProvider: ServiceUserService,
+        private OrderService: OrdersService,
         private notifier: NotifierService
     ) {
-        this.user = new User();
+        this.order = new Order();
     }
 
     ngOnInit(): void {
-        this.serviceProvider.getAllServices().subscribe((res: any) => {
-            this.services = res.data;
+        this.userService.getAllFournisseurs().subscribe((res: any) => {
+            this.fournisseurs = res.data;
         });
     }
 
-    createUser() {
-        this.userService.createUser(this.user).subscribe(
+    createOrder() {
+        this.OrderService.createOrder(this.order).subscribe(
             (res: any) => {
-                this.successMsg = "User added successfully!";
+                this.successMsg = "Order added successfully!";
                 setTimeout(() => {
-                    window.location.href = "/users";
+                    window.location.href = "/commandes";
                 }, 2000);
             },
             (err) => {

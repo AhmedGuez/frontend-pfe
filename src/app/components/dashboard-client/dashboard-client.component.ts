@@ -88,7 +88,10 @@ export class DashboardClientComponent implements OnInit {
                                     (this.dataInfo.total * 100) /
                                     this.total
                                 ).toFixed(2);
-                                if (inter.affectedBy) {
+                                if (
+                                    inter.affectedBy &&
+                                    inter.etat == "EN_COURS"
+                                ) {
                                     this.dataInfo.totalEnCours += 1;
                                     if (
                                         inter.affectedBy._id == this.account._id
@@ -110,7 +113,10 @@ export class DashboardClientComponent implements OnInit {
                                     (this.dataMeca.total * 100) /
                                     this.total
                                 ).toFixed(2);
-                                if (inter.affectedBy) {
+                                if (
+                                    inter.affectedBy &&
+                                    inter.etat == "EN_COURS"
+                                ) {
                                     this.dataMeca.totalEnCours += 1;
                                     if (
                                         inter.affectedBy._id == this.account._id
@@ -131,7 +137,10 @@ export class DashboardClientComponent implements OnInit {
                                     (this.dataElec.total * 100) /
                                     this.total
                                 ).toFixed(2);
-                                if (inter.affectedBy) {
+                                if (
+                                    inter.affectedBy &&
+                                    inter.etat == "EN_COURS"
+                                ) {
                                     this.dataElec.totalEnCours += 1;
                                     if (
                                         inter.affectedBy._id == this.account._id
@@ -152,7 +161,10 @@ export class DashboardClientComponent implements OnInit {
                                     (this.dataPlom.total * 100) /
                                     this.total
                                 ).toFixed(2);
-                                if (inter.affectedBy) {
+                                if (
+                                    inter.affectedBy &&
+                                    inter.etat == "EN_COURS"
+                                ) {
                                     this.dataPlom.totalEnCours += 1;
                                     if (
                                         inter.affectedBy._id == this.account._id

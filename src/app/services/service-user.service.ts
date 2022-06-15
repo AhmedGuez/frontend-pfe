@@ -20,4 +20,16 @@ export class ServiceUserService {
     public getAllServices() {
         return this.http.get(this.base_Url + "/services/getAllSerives");
     }
+
+    public deleteService(id) {
+        let token = localStorage.getItem("token");
+        let headers = new HttpHeaders({
+            "x-auth-token": token ? token : "",
+        });
+        return this.http.delete(
+            this.base_Url + `/services/delete/${id}`,
+
+            { headers }
+        );
+    }
 }

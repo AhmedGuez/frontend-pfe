@@ -81,4 +81,21 @@ export class InterventionDetailsComponent implements OnInit {
                 window.location.reload();
             });
     }
+
+    supprimerIntervention(id) {
+        this.interventionService.deleteIntervention(id).subscribe((res) => {
+            window.location.href = "/interventions";
+        });
+    }
+
+    updateOrderIntervention(id) {
+        let params = {
+            interventionId: id,
+        };
+        this.interventionService
+            .updateInterventionOrder(params, id)
+            .subscribe((res) => {
+                window.location.reload();
+            });
+    }
 }

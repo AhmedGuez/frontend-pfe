@@ -48,6 +48,21 @@ export class UserService {
         });
     }
 
+    public createFournisseur(account) {
+        let token = localStorage.getItem("token");
+        let headers = new HttpHeaders({
+            "x-auth-token": token ? token : "",
+        });
+
+        return this.http.post(
+            this.base_Url + "/users/createFournisseur",
+            account,
+            {
+                headers,
+            }
+        );
+    }
+
     public getAllUsers() {
         let token = localStorage.getItem("token");
         let headers = new HttpHeaders({
@@ -57,5 +72,28 @@ export class UserService {
         return this.http.get(this.base_Url + "/users", {
             headers,
         });
+    }
+
+    public getAllFournisseurs() {
+        let token = localStorage.getItem("token");
+        let headers = new HttpHeaders({
+            "x-auth-token": token ? token : "",
+        });
+
+        return this.http.get(this.base_Url + "/users/getAllFournisseurs", {
+            headers,
+        });
+    }
+
+    public deleteUser(id) {
+        let token = localStorage.getItem("token");
+        let headers = new HttpHeaders({
+            "x-auth-token": token ? token : "",
+        });
+        return this.http.delete(
+            this.base_Url + `/users/delete/${id}`,
+
+            { headers }
+        );
     }
 }

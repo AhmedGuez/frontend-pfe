@@ -16,10 +16,20 @@ export class ListingUsersComponent implements OnInit {
             role: "",
         };
     }
-
-    ngOnInit(): void {
+    getAllUsers() {
         this.userService.getAllUsers().subscribe((res: any) => {
             this.users = res.data;
+        });
+    }
+    ngOnInit(): void {
+        this.getAllUsers();
+    }
+
+    deleteUser(id) {
+        this.userService.deleteUser(id).subscribe((res) => {
+            this.userService.getAllUsers().subscribe((res: any) => {
+                this.users = res.data;
+            });
         });
     }
 }

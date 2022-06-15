@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
+import { NotifierService } from "angular-notifier";
+
 import { UserService } from "src/app/services/user.service";
 
 @Component({
@@ -10,7 +12,12 @@ import { UserService } from "src/app/services/user.service";
 export class LoginComponent implements OnInit {
     public email?: string;
     public password?: string;
-    constructor(private userService: UserService, private router: Router) {
+
+    constructor(
+        private userService: UserService,
+        private router: Router,
+        private notifier: NotifierService
+    ) {
         this.email = "";
         this.password = "";
     }
@@ -19,9 +26,8 @@ export class LoginComponent implements OnInit {
 
     handleSubmit() {
         console.log("user : ", this.email, this.password);
-        this.userService
-            .login(this.email, this.password)
-            .subscribe((res: any) => {
+        this.userService.login(this.email, this.password).subscribe(
+            (res: any) => {
                 localStorage.setItem("token", res?.token);
                 localStorage.setItem("role", res?.role);
                 if (res?.token && res?.role === "ADMIN") {
@@ -31,6 +37,16 @@ export class LoginComponent implements OnInit {
                 } else if (res?.token) {
                     window.location.href = "/dashboard-client";
                 }
-            });
+            },
+            (err) => {
+                console.log("err", err);
+                this.notifier.show({
+                    type: "error",
+
+                    message: "Vérifier votre email et mot de passe SVP!",
+                    id: "THAT_NOTIFICATION_ID", // Again, this is optional
+                });
+            }
+        );
     }
 }

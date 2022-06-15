@@ -1,33 +1,33 @@
 import { Component, OnInit } from "@angular/core";
 import { NotifierService } from "angular-notifier";
-import { ServiceModel } from "src/app/models/service-model";
-import { ServiceUserService } from "src/app/services/service-user.service";
+import { Fournisseur } from "src/app/models/fournisseur";
+import { UserService } from "src/app/services/user.service";
 
 @Component({
-    selector: "app-create-service",
-    templateUrl: "./create-service.component.html",
-    styleUrls: ["./create-service.component.scss"],
+    selector: "app-create-fournisseur",
+    templateUrl: "./create-fournisseur.component.html",
+    styleUrls: ["./create-fournisseur.component.scss"],
 })
-export class CreateServiceComponent implements OnInit {
-    public service: ServiceModel;
+export class CreateFournisseurComponent implements OnInit {
+    public fournisseur: Fournisseur;
     public successMsg: String = "";
     public errorMsg: String = "";
 
     constructor(
-        private serviceProvider: ServiceUserService,
+        private userService: UserService,
         private notifier: NotifierService
     ) {
-        this.service = new ServiceModel();
+        this.fournisseur = new Fournisseur();
     }
 
     ngOnInit(): void {}
 
-    createService() {
-        this.serviceProvider.addService(this.service).subscribe(
+    createFournisseur() {
+        this.userService.createFournisseur(this.fournisseur).subscribe(
             (res: any) => {
-                this.successMsg = "service added successfully!";
+                this.successMsg = "Fournisseur added successfully!";
                 setTimeout(() => {
-                    window.location.href = "/services";
+                    window.location.href = "/fournisseurs";
                 }, 2000);
             },
             (err) => {

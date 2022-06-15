@@ -30,6 +30,13 @@
             <span> <strong>Degree : </strong>{{ intervention.degree }}</span>
             <span> <strong>Delai : </strong>{{ intervention.delai }}</span>
         </div>
+        <button
+            class="btn btn-primary ml-2"
+            *ngIf="intervention.etat != 'TERMINEE'"
+            [routerLink]="['/create-order/', intervention._id]"
+        >
+            Passer une commande
+        </button>
         <div
             class="d-flex align-items-end"
             *ngIf="intervention.etat == 'NON_AFFECTEE'"
@@ -40,6 +47,16 @@
                 (click)="affectedToMe(intervention)"
             >
                 Affecter à moi
+            </button>
+
+            <button
+                class="btn btn-danger ml-2 mr-2"
+                *ngIf="
+                    me.role == 'ADMIN' && intervention.etat == 'NON_AFFECTEE'
+                "
+                (click)="supprimerIntervention(intervention._id)"
+            >
+                Supprimer
             </button>
             <button
                 class="btn btn-primary"
@@ -144,6 +161,19 @@
         <strong>Role : </strong>
         <span>
             {{ intervention.affectedBy.role }}
+        </span>
+    </span>
+    <span>
+        <strong>Date début : </strong>
+        <span>
+            {{ intervention.dateDebut }}
+        </span>
+    </span>
+
+    <span class="inter.etat == 'TERMINEE'">
+        <strong>Date fin : </strong>
+        <span>
+            {{ intervention.dateEnd }}
         </span>
     </span>
     <div class="d-flex justify-content-end">

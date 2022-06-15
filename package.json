@@ -20,6 +20,7 @@
         "@angular/platform-browser-dynamic": "~9.1.7",
         "@angular/router": "~9.1.7",
         "@babel/runtime-corejs2": "^7.9.6",
+        "angular-notifier": "^7.0.0",
         "apexcharts": "^3.10.1",
         "bootstrap": "^4.3.1",
         "jquery": "^3.4.1",
